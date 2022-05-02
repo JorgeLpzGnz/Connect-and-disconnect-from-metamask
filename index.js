@@ -18,9 +18,9 @@ async function login(){
                               }
                             ]
                       })
-              .catch(accounts = await window.ethereum
-                                           .request({ method: 'eth_requestAccounts' }))
-
+              .then(accounts = await window.ethereum
+                                           .request({ method: 'eth_requestAccounts' })
+                                           )
   window.userWalletAddress = accounts[0]
 }
 
