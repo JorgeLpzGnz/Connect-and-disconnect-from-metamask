@@ -466,8 +466,6 @@ connect.addEventListener('click', () => login())
 disconnect.addEventListener('click', () => logout())
 change.addEventListener('click', () => changeNw())
 
-console.log(ethereum.selectedAddress)
-
 async function login(){
 
   if(window.ethereum){
@@ -483,7 +481,9 @@ async function login(){
                         })
                 .then(flag = true)
 
-    if(flag){    
+    if(flag){  
+        
+    
 
     const provider = new ethers.providers.Web3Provider(window.ethereum);
 
@@ -491,15 +491,15 @@ async function login(){
 
     const contract = new ethers.Contract(address, abi, signer);
 
-    const balance = await contract.balanceOf(ethers.constants.AddressZero) 
-    .then((tx) => {
-        console.log("Transaction occured: ", tx.hash);
-        })
-    .catch((x) => link.innerHTML = x.error.message );
+    // const balance = await contract.balanceOf(ethers.constants.AddressZero) 
+    // .then((tx) => {
+    //     console.log("Transaction occured: ", tx.hash);
+    //     })
+    // .catch((x) => link.innerHTML = x.error.message);
 
-    console.log(1)
+    // console.log(1)
 
-    console.log(ethereum.selectedAddress)
+    
 
     // console.log(ethereum.selectedAddress)
 
@@ -531,12 +531,14 @@ async function changeNw(){
 }
 
 function logout(){
-  window.userWalletAddress = null
+    ethereum.selectedAddress = null
 }
     
 
 
-
+window.addEventListener('click', () => 
+console.log(ethereum.selectedAddress)
+)
 
 
 
