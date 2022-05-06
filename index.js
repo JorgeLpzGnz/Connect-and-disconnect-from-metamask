@@ -537,7 +537,20 @@ function logout(){
 
 
 window.addEventListener('click', () => 
-console.log(ethereum.selectedAddress)
+{console.log(ethereum.selectedAddress)
+
+    let text = /^\w{4}/
+
+    let text2 = /\w{4}$/
+
+    let test2 = ethereum.selectedAddress.match(text2)
+
+    let test1 = ethereum.selectedAddress.match(text)
+
+    console.log(test1[0])
+
+    link.innerHTML = test1[0] + '...' + test2
+}
 )
 
 
